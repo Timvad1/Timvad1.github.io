@@ -28,13 +28,7 @@ span {
   border-color: blue;
   background-color: yellow;
 }
-.sticky {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-  font-size: 18px;
-}
-<div class="sticky"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Creative-Tail-Animal-cat.svg/128px-Creative-Tail-Animal-cat.svg.png" alt="cat icon"></div>
+
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
 
   <head>
