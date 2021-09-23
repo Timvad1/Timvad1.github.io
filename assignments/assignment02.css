@@ -1,6 +1,13 @@
 body {
   background-color: skyblue;
- 
+  
+ .sticky {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+   <div class="sticky"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Creative-Tail-Animal-cat.svg/128px-Creative-Tail-Animal-cat.svg.png" alt="cat icon"></div>
+}
 
 }
   #igottabeme {
