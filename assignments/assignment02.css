@@ -45,7 +45,7 @@ span.c {display: inline-block;}
   top: 150px;
 }
 #positionMe{
-  position:relative;
+  position:absolute;
 }
 #bird{
   position: absolute;
