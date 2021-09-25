@@ -29,6 +29,14 @@ span {
   border-color: blue;
   background-color: yellow;
 }
+
+span.a {
+  word-wrap: normal;
+}
+
+span.c {
+  word-wrap: break-word;
+}
  
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
 
