@@ -33,7 +33,8 @@ span {
 span.a {display: inline;}
 span.b {display: block;}
 span.c {display: inline-block;}
-div.cat icon{
+
+div.caticon{
   position: fixed;
   bottom: 0;
   right: 0;
