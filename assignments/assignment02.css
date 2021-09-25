@@ -42,15 +42,15 @@ span.c {display: inline-block;}
 #dog{
   position: relative;
   left: 50px;
-  top: 150px;
+  bottom: 150px;
 }
 #positionMe{
   position:relative;
 }
 #bird{
   position: absolute;
-  left:50px;
-  bottom:100px;
+  left:250px;
+  bottom:50px;
 }
 
  
