@@ -30,11 +30,15 @@ span {
   background-color: yellow;
 }
 
-span.a {
+a {
   word-wrap: normal;
 }
 
-span.c {
+b {
+  display: block;
+}
+
+c {
   word-wrap: break-word;
 }
  
