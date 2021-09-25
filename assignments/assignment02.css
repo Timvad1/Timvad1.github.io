@@ -39,6 +39,16 @@ span.c {display: inline-block;}
   bottom: 0;
   right: 0;
 }
+#dog {
+  position: relative;
+  left: 50px;
+  top:150px;
+}
+#bird{
+  position: absolute;
+  top: 50px;
+  right:250px;
+}
 
  
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
