@@ -49,6 +49,8 @@ span.c {display: inline-block;}
 }
 #bird{
   position: absolute;
+  left:50px;
+  bottom:100px;
 }
 
  
