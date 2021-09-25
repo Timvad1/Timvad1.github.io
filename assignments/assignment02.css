@@ -41,13 +41,13 @@ span.c {display: inline-block;}
 }
 #dog {
   position: relative;
-  left: 50px;
-  top:150px;
+  left: 50;
+  top: 150;
 }
 #bird{
   position: absolute;
-  top: 50px;
-  right:250px;
+  top: 50;
+  right: 250;
 }
 
  
