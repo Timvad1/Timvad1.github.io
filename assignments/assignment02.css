@@ -30,16 +30,16 @@ span {
   background-color: yellow;
 }
 
-a {
-  word-wrap: normal;
+span.a {
+  display: inline;
 }
 
-b {
+span.b {
   display: block;
 }
 
-c {
-  word-wrap: break-word;
+span.c {
+  display: inline-block;
 }
  
 /* external css is imported into html using the <link> tag in the <head> section, as shown below.
