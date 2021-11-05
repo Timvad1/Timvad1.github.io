@@ -1,6 +1,8 @@
-// ---------- Global variables ----------
+//// ---------- Global variables ----------
 
 // use "var" keyword so code works in CodePen
+
+
 
 // Covid19api variables
 var URL = "https://api.covid19api.com/summary";
@@ -30,6 +32,11 @@ var chartData = {
       label: 'oranges',
       data: [2, 29, 5, 5, 2, 3, 10],
       backgroundColor: "rgba(255,140,0,0.4)"
+    },
+              {
+      label: 'Kiwis',
+      data: [2, 29, 5, 5, 2, 3, 10],
+      backgroundColor: "rgba(255,140,0,0.4)"
     }]
   },
   options: {
@@ -41,12 +48,17 @@ var chartData = {
       yAxes: [{
         ticks: {
           // logarithmic scale ignores maxTicksLimit
-          maxTicksLimit: 11,
+          maxTicksLimit: 10,
           callback: function(label, index, labels) {
-            return (   label/1000 > 9 
-                    || label/1000 == 1 
-                    || label/1000 == 0.1 
-                    || label/1000 == 0.01) 
+            return (
+                      label/1000 == 10000 
+                   || label/1000 == 1000 
+                   || label/1000 == 100
+                   || label/1000 == 10 
+                   || label/1000 == 1
+                   || label/1000 == .1
+                    
+                    ) 
               ? label/1000+'k' :  "";
           }
         },
@@ -76,41 +88,57 @@ function loadContent() {
     if (this.readyState == 4 
         && this.status == 200) {
       
-      covidJson = this.responseText;
+      if (!localStorage.getItem("Covid"))
+      localStorage.setItem("Covid", this.responseText);
+      covidJson = localStorage.getItem("Covid");
       covidJsObj = JSON.parse(covidJson);
       newConfirmedOver1000 = [];
       
-	    for (let c of covidJsObj.Countries) {
-        if (c.NewConfirmed > 5000) {
+for (let c of covidJsObj.Countries) {
+        if (c.TotalDeaths > 50000) {
           newConfirmedOver1000.push({ 
             "Slug": c.Slug, 
             "NewConfirmed": c.NewConfirmed, 
-            "NewDeaths": c.NewDeaths
+            "NewDeaths": c.NewDeaths,
+            "TotalConfirmed": c.TotalConfirmed, 
+            "TotalDeaths": c.TotalDeaths,
+            "Population": populations[c.Slug],
+            "TotalConfirmedPer100000": 100000 * c.TotalConfirmed / populations[c.Slug],
           });
         }
       }
-      newConfirmedOver1000 = _.orderBy(newConfirmedOver1000, "NewDeaths", "desc");
-
+      newConfirmedOver1000 =_.orderBy(newConfirmedOver1000,'TotalConfirmedPer100000', 'desc');
       chartData.data.datasets[0].backgroundColor 
         = "rgba(100,100,100,0.4)"; // gray
       chartData.data.datasets[1].backgroundColor 
         = "rgba(255,0,0,0.4)"; // red
+      chartData.data.datasets[2].backgroundColor 
+        = "rgba(0,0,255,0.4)"; // blue
       chartData.data.datasets[0].label  
-        = 'new cases';
+        = 'total cases';
       chartData.data.datasets[1].label  
-        = 'new deaths';
+        = 'total deaths';
+      chartData.data.datasets[2].label  
+        = 'total cases per 100000';
       chartData.data.labels  
         = newConfirmedOver1000.map( (x) => x.Slug );
       chartData.data.datasets[0].data  
         = newConfirmedOver1000.map( 
-          (x) => x.NewConfirmed );
+          (x) => x.TotalConfirmed );
       chartData.data.datasets[1].data  
         = newConfirmedOver1000.map( 
-          (x) => x.NewDeaths );
+          (x) => x.TotalDeaths );
+      chartData.data.datasets[2].data  
+        = newConfirmedOver1000.map( 
+          (x) => 100000 * x.TotalConfirmed / populations[x.Slug]);
       chartData.options.title.text 
-        = "Covid 19 Hotspots" ;
+        = "Covid 19 Hotspots (" + 
+        dayjs().format("YYYY-MM-DD") + ")" ;
+      //sort by
+       _.sortBy(chartData, 'TotalConfirmedPer100000');
       myChart = new Chart(ctx, chartData); 
-
+             
+      
     } // end if
     
   }; // end xhttp.onreadystatechange = function()
