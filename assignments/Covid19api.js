@@ -1,4 +1,4 @@
-//// ---------- Global variables ----------
+// ---------- Global variables ----------
 
 // use "var" keyword so code works in CodePen
 
