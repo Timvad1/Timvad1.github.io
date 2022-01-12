@@ -1,11 +1,12 @@
 <html>
 <head>
+<title> Timothy Vadasz</title>
 <style>
-h1 {
+title {
 text-align: center;
 font-size: 75px;
 }
 </style>
 </head>
 <body>
-<h1> Timothy Vadasz's web page </h1>
+
