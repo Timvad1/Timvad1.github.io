@@ -6,7 +6,12 @@ title {
 text-align: center;
 font-size: 75px;
 }
+h1 {
+text-align:center:
+}
 </style>
 </head>
 <body>
+<h1> About Me <h1>
+<p> Hello, my name is Timothy Vadasz and I am currently a Junior at Saginaw Valley State University. I was born and still live in Brownstown MI.<p>
 
