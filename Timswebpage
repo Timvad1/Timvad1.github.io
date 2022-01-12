@@ -3,6 +3,7 @@
 <style>
 p.title{
 font-size:50px
+div.title{text-align:center}
 }
 </style>
 </head>
